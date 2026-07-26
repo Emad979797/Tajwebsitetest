@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useState } from "react";
 
 type Language = "en" | "ar";
 type Theme = "light" | "dark";
@@ -244,7 +244,7 @@ export default function Home() {
   const [bot, setBot] = useState(false);
   const t = copy[lang];
   const dir = lang === "ar" ? "rtl" : "ltr";
-  const year = useMemo(() => new Date().getFullYear(), []);
+  const year = new Date().getFullYear();
 
   function changeLanguage() {
     setLang((value) => (value === "en" ? "ar" : "en"));
@@ -297,12 +297,14 @@ export default function Home() {
         <div className="hero-orbit hero-orbit--one" />
         <div className="hero-orbit hero-orbit--two" />
         <div className="hero-copy reveal">
-          <div className="eyebrow"><span className="eyebrow-mark">✓</span>{t.eyebrow}</div>
+          <div className="eyebrow trust-statement">
+            <span className="eyebrow-mark">✓</span>
+            <span><strong>{t.eyebrow}</strong><small>{lang === "en" ? "Licensed. Regulated. Trusted." : "مرخّص. منظّم. موثوق."}</small></span>
+          </div>
           <h1>{t.titleA}<br /><em>{t.titleB}</em></h1>
           <p>{t.intro}</p>
           <div className="hero-actions">
             <a className="button" href="#quote">{t.start}<span>↗</span></a>
-            <a className="text-link" href="https://wa.me/16477071972" target="_blank" rel="noreferrer">{t.whatsapp}<span>↗</span></a>
           </div>
           <div className="hero-proof">
             <span className="maple">✦</span>
@@ -311,22 +313,29 @@ export default function Home() {
         </div>
         <div className="hero-visual">
           <div className="portrait-frame">
-            <img src="/abdul-rahim.jpg" alt="Abdul Rahim Aljouja, RIBO licensed insurance broker" />
+            <img src="/abdul-rahim-hero-v2.png" alt="Abdul Rahim Aljouja, RIBO licensed insurance broker" />
             <div className="portrait-shade" />
-            <div className="portrait-name"><small>YOUR BROKER</small><strong>ABDUL RAHIM<br />ALJOUJA</strong></div>
           </div>
+          <div className="portrait-name"><small>YOUR BROKER</small><strong>ABDUL RAHIM<br />ALJOUJA</strong></div>
           <div className="rate-card">
-            <span className="rate-icon">◎</span>
+            <span className="rate-card-orb"><i /><b>4</b></span>
             <div><strong>{t.compare}</strong><small>{t.compareText}</small></div>
           </div>
         </div>
       </section>
 
       <section className="trust-strip" aria-label="Key benefits">
-        <span>RIBO LICENSED</span><i />
-        <span>ENGLISH + العربية</span><i />
-        <span>PERSONAL SERVICE</span><i />
-        <span>CANADA-WIDE</span>
+        {[
+          ["RIBO", "Licensed broker", "R"],
+          ["EN + AR", "Bilingual service", "文"],
+          ["1:1", "Personal guidance", "◆"],
+          ["CA", "Canada-wide", "✦"],
+        ].map(([title, subtitle, icon]) => (
+          <div className="trust-badge" key={title}>
+            <span className="trust-icon">{icon}</span>
+            <span><strong>{title}</strong><small>{subtitle}</small></span>
+          </div>
+        ))}
       </section>
 
       <section className="section coverage" id="coverage">
@@ -338,7 +347,7 @@ export default function Home() {
           {t.services.map(([title, description, number], index) => (
             <article className={`service-card service-card--${index + 1}`} key={title}>
               <div className="service-top"><span className="service-number">{number}</span><span className="service-arrow">↗</span></div>
-              <div className={`service-symbol service-symbol--${index + 1}`} aria-hidden="true">{["◉", "⌂", "◇", "▣"][index]}</div>
+              <div className={`service-symbol service-symbol--${index + 1}`} aria-hidden="true" />
               <h3>{title}</h3><p>{description}</p>
               <a href="#quote" onClick={() => setStep(2)}>{t.quote}<span>→</span></a>
             </article>
@@ -348,9 +357,8 @@ export default function Home() {
 
       <section className="section difference" id="difference">
         <div className="difference-image">
-          <img src="/taj-insurance-ad.jpg" alt="" />
+          <img src="/coverage-world-3d.png" alt="3D insurance world showing auto, home, tenant and business coverage" />
           <div className="difference-image-overlay" />
-          <div className="difference-seal"><strong>TAJ</strong><span>INSURANCE</span></div>
         </div>
         <div className="difference-copy">
           <span className="kicker">{t.differenceKicker}</span>
@@ -378,8 +386,7 @@ export default function Home() {
 
       <section className="section about" id="about">
         <div className="about-portrait">
-          <img src="/abdul-rahim.jpg" alt="Abdul Rahim Aljouja" />
-          <div className="about-monogram">AA</div>
+          <img src="/comparison-engine-3d.png" alt="3D comparison engine connecting four insurance services to one guided choice" />
         </div>
         <div className="about-copy">
           <span className="kicker">{t.aboutKicker}</span><h2>{t.aboutTitle}</h2>
@@ -415,38 +422,36 @@ export default function Home() {
           {sent ? (
             <div className="success-state"><span>✓</span><h3>{t.sentTitle}</h3><p>{t.sentText}</p></div>
           ) : (
-            <form onSubmit={submitLead}>
-              <div className="form-progress"><span className={step >= 1 ? "active" : ""}>1</span><i /><span className={step >= 2 ? "active" : ""}>2</span><i /><span className={step >= 3 ? "active" : ""}>3</span></div>
-              <div className={step === 1 ? "form-step form-step--active" : "form-step"}>
-                <label><span>{t.fields.name} *</span><input name="name" required autoComplete="name" /></label>
-                <div className="form-row">
-                  <label><span>{t.fields.email} *</span><input name="email" type="email" required autoComplete="email" /></label>
-                  <label><span>{t.fields.phone} *</span><input name="phone" type="tel" required autoComplete="tel" /></label>
-                </div>
-                <div className="form-row">
-                  <label><span>{t.fields.province} *</span><select name="province" required defaultValue=""><option value="" disabled>{t.options.select}</option>{provinces.map((province) => <option key={province}>{province}</option>)}</select></label>
-                  <label><span>{t.fields.city}</span><input name="city" autoComplete="address-level2" /></label>
-                </div>
-                <div className="form-actions form-actions--end"><button type="button" className="button" onClick={() => setStep(2)}>{t.next}<span>→</span></button></div>
+            <form onSubmit={submitLead} className="quote-form-modern">
+              <div className="form-card-heading">
+                <span className="form-card-number">01</span>
+                <div><strong>{t.formKicker}</strong><small>{t.required}: name, email, phone & coverage</small></div>
               </div>
-              <div className={step === 2 ? "form-step form-step--active" : "form-step"}>
-                <label><span>{t.fields.insurance} *</span><select name="insurance" required defaultValue=""><option value="" disabled>{t.options.select}</option>{["auto", "home", "tenant", "business", "multiple"].map((key) => <option key={key} value={key}>{t.options[key as keyof typeof t.options]}</option>)}</select></label>
-                <div className="form-row">
-                  <label><span>{t.fields.language}</span><select name="preferredLanguage" defaultValue={lang}><option value="en">{t.options.english}</option><option value="ar">{t.options.arabic}</option></select></label>
-                  <label><span>{t.fields.contact}</span><select name="contactMethod" defaultValue="whatsapp"><option value="whatsapp">{t.options.wa}</option><option value="phone">{t.options.call}</option><option value="email">{t.options.mail}</option></select></label>
-                </div>
-                <div className="form-row">
-                  <label><span>{t.fields.time}</span><select name="contactTime" defaultValue="afternoon"><option value="morning">{t.options.morning}</option><option value="afternoon">{t.options.afternoon}</option><option value="evening">{t.options.evening}</option></select></label>
-                  <label><span>{t.fields.current}</span><select name="currentlyInsured" defaultValue=""><option value="">{t.options.select}</option><option value="yes">{t.options.yes}</option><option value="no">{t.options.no}</option></select></label>
-                </div>
-                <div className="form-actions"><button type="button" className="button button--ghost" onClick={() => setStep(1)}>{t.back}</button><button type="button" className="button" onClick={() => setStep(3)}>{t.next}<span>→</span></button></div>
+              <div className="form-service-title">{t.fields.insurance} *</div>
+              <div className="service-choices">
+                {(["auto", "home", "tenant", "business", "multiple"] as const).map((key, index) => (
+                  <label className="service-choice" key={key}>
+                    <input type="radio" name="insurance" value={key} required />
+                    <span className={`mini-service-icon mini-service-icon--${Math.min(index + 1, 4)}`} />
+                    <strong>{t.options[key]}</strong>
+                  </label>
+                ))}
               </div>
-              <div className={step === 3 ? "form-step form-step--active" : "form-step"}>
-                <label><span>{t.fields.effective}</span><input name="effectiveDate" type="date" /></label>
-                <label><span>{t.fields.notes}</span><textarea name="notes" rows={5} /></label>
-                <label className="checkbox"><input name="consent" type="checkbox" value="yes" required /><span>{t.fields.consent} *</span></label>
-                <div className="form-actions"><button type="button" className="button button--ghost" onClick={() => setStep(2)}>{t.back}</button><button type="submit" className="button" disabled={submitting}>{submitting ? "…" : t.submit}<span>↗</span></button></div>
+              <div className="form-grid">
+                <label className="field field--wide"><span>{t.fields.name} *</span><input name="name" required autoComplete="name" placeholder={lang === "en" ? "First and last name" : "الاسم الأول والأخير"} /></label>
+                <label className="field"><span>{t.fields.email} *</span><input name="email" type="email" required autoComplete="email" placeholder="name@email.com" /></label>
+                <label className="field"><span>{t.fields.phone} *</span><input name="phone" type="tel" required autoComplete="tel" placeholder="+1 000 000 0000" /></label>
+                <label className="field"><span>{t.fields.province} *</span><select name="province" required defaultValue=""><option value="" disabled>{t.options.select}</option>{provinces.map((province) => <option key={province}>{province}</option>)}</select></label>
+                <label className="field"><span>{t.fields.city}</span><input name="city" autoComplete="address-level2" /></label>
+                <label className="field"><span>{t.fields.contact}</span><select name="contactMethod" defaultValue="whatsapp"><option value="whatsapp">{t.options.wa}</option><option value="phone">{t.options.call}</option><option value="email">{t.options.mail}</option></select></label>
+                <label className="field"><span>{t.fields.time}</span><select name="contactTime" defaultValue="afternoon"><option value="morning">{t.options.morning}</option><option value="afternoon">{t.options.afternoon}</option><option value="evening">{t.options.evening}</option></select></label>
+                <label className="field"><span>{t.fields.current}</span><select name="currentlyInsured" defaultValue=""><option value="">{t.options.select}</option><option value="yes">{t.options.yes}</option><option value="no">{t.options.no}</option></select></label>
+                <label className="field"><span>{t.fields.effective}</span><input name="effectiveDate" type="date" /></label>
+                <label className="field field--wide"><span>{t.fields.notes}</span><textarea name="notes" rows={4} placeholder={lang === "en" ? "Anything helpful for your quote…" : "أي معلومات مفيدة لطلب العرض…"} /></label>
               </div>
+              <input type="hidden" name="preferredLanguage" value={lang} />
+              <label className="checkbox"><input name="consent" type="checkbox" value="yes" required /><span>{t.fields.consent} *</span></label>
+              <div className="form-submit-row"><span><b>✓</b>{lang === "en" ? "Secure & no obligation" : "آمن ومن دون التزام"}</span><button type="submit" className="button button--submit" disabled={submitting}>{submitting ? "…" : t.submit}<span>↗</span></button></div>
             </form>
           )}
         </div>
@@ -454,16 +459,23 @@ export default function Home() {
 
       <footer className="footer">
         <div className="footer-main"><div><Brand /><p>{t.footerText}</p></div><div className="footer-socials">
-          <a href="https://www.instagram.com/abdul_rahim_aljouja" target="_blank" rel="noreferrer">Instagram ↗</a>
-          <a href="https://www.facebook.com/share/18b4fV69QH/" target="_blank" rel="noreferrer">Facebook ↗</a>
-          <a href="https://www.tiktok.com/@abboudi_j" target="_blank" rel="noreferrer">TikTok ↗</a>
-          <a href="https://x.com/aljoujaabdul" target="_blank" rel="noreferrer">X ↗</a>
-          <a href="https://www.linkedin.com/in/abdul-rahim-aljouja-90780728" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          {[
+            ["Instagram", "instagram", "https://www.instagram.com/abdul_rahim_aljouja"],
+            ["Facebook", "facebook", "https://www.facebook.com/share/18b4fV69QH/"],
+            ["TikTok", "tiktok", "https://www.tiktok.com/@abboudi_j"],
+            ["X", "x", "https://x.com/aljoujaabdul"],
+            ["LinkedIn", "linkedin", "https://www.linkedin.com/in/abdul-rahim-aljouja-90780728"],
+          ].map(([name, icon, href]) => (
+            <a key={name} href={href} target="_blank" rel="noreferrer" aria-label={name}>
+              <span className="social-orb"><img src={icon === "linkedin" ? "/linkedin.svg" : `https://cdn.simpleicons.org/${icon}/ffffff`} alt="" /></span>
+              <small>{name}</small>
+            </a>
+          ))}
         </div></div>
         <div className="footer-bottom"><span>© {year} Taj Insurance. {t.legal}.</span><div><a href="/privacy">{t.privacy}</a><a href="/admin">{t.admin}</a></div></div>
       </footer>
 
-      <a className="whatsapp-float" href="https://wa.me/16477071972?text=Hello%20Abdul%20Rahim%2C%20I%27d%20like%20an%20insurance%20quote." target="_blank" rel="noreferrer" aria-label={t.whatsapp}><span>☎</span><small>WhatsApp</small></a>
+      <a className="whatsapp-float" href="https://wa.me/16477071972?text=Hello%20Abdul%20Rahim%2C%20I%27d%20like%20an%20insurance%20quote." target="_blank" rel="noreferrer" aria-label={t.whatsapp}><span><img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" /></span><small>WhatsApp</small></a>
       <button className="bot-button" onClick={() => setBot(!bot)} aria-label="Open Taj assistant"><span>{bot ? "×" : "✦"}</span></button>
       {bot && <div className="bot-panel"><div className="bot-head"><Brand compact /><button onClick={() => setBot(false)}>×</button></div><div className="bot-message">{t.botHello}</div><p>{t.botPrompt}</p><div className="bot-options">{[t.options.auto, t.options.home, t.options.tenant, t.options.business].map((option) => <a key={option} href="#quote" onClick={() => { setBot(false); setStep(2); }}>{option}<span>→</span></a>)}</div><a className="bot-whatsapp" href="https://wa.me/16477071972" target="_blank" rel="noreferrer">{t.whatsapp}</a></div>}
     </main>
