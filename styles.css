@@ -408,9 +408,10 @@ a { color: inherit; }
   padding: 16px clamp(42px, 5vw, 80px) 28px;
   background: white;
 }
-.service-grid { gap: 28px; }
+.service-grid { gap: 28px; align-items: stretch; }
 .service-card {
   min-height: 0;
+  height: 100%;
   padding: 0;
   border-radius: 18px;
   text-align: center;
@@ -418,7 +419,7 @@ a { color: inherit; }
 }
 .service-card:nth-child(even) { background: linear-gradient(145deg, #f8fdff, #edf7fc); }
 .service-card::before { display: none; }
-.service-art { width: 100%; aspect-ratio: 1008 / 1059; overflow: hidden; border-radius: 15px; }
+.service-art { width: 100%; height: 100%; min-height: 0; aspect-ratio: 1008 / 1059; overflow: hidden; border-radius: 15px; }
 .service-art img { width: 100%; height: 100%; object-fit: fill; object-position: center; display: block; }
 .service-card h3 { display: none; }
 .service-card p { display: none; }

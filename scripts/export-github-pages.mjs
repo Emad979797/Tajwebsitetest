@@ -21,7 +21,7 @@ const providersDetails = `<details class="providers-all"><summary>View all insur
 const baseDocumentHtml = sourceHtml
   .split('<script id="_R_">')[0]
   .replace(/<link rel="preload"[^>]*\/>/g, "")
-  .replace(/<link rel="stylesheet"[^>]*\/>/g, `<link rel="stylesheet" href="${projectPath}/styles.css"/>`)
+  .replace(/<link rel="stylesheet"[^>]*\/>/g, `<link rel="stylesheet" href="${projectPath}/styles.css?v=20260729-1445"/>`)
   .replace(/<script type="module">import \{ injectIntoGlobalHook \}[\s\S]*?<\/script>/g, "")
   .replace(/<script type="module" src="\/@vite\/client"><\/script>/g, "")
   .replace(/<script type="module" src="\/@id\/[^"]+"><\/script>/g, "")
@@ -34,6 +34,10 @@ const baseDocumentHtml = sourceHtml
   .replaceAll("service-home.png", "service-home-new.png")
   .replaceAll("service-business.png", "service-business-new.png")
   .replaceAll("service-travel.png", "service-travel-new.png")
+  .replaceAll("service-auto-new.png\"", "service-auto-new.png?v=20260729-1445\"")
+  .replaceAll("service-home-new.png\"", "service-home-new.png?v=20260729-1445\"")
+  .replaceAll("service-business-new.png\"", "service-business-new.png?v=20260729-1445\"")
+  .replaceAll("service-travel-new.png\"", "service-travel-new.png?v=20260729-1445\"")
   .replaceAll("why-broker-emerald.png", "why-broker-combined-new.png")
   .replaceAll("why-broker-horizontal.png", "why-broker-combined-new.png")
   .replaceAll("Insurance providers Abdul Rahim works with.", "Insurance providers")
