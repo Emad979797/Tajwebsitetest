@@ -34,7 +34,11 @@ const baseDocumentHtml = sourceHtml
   .replaceAll("service-home.png", "service-home-new.png")
   .replaceAll("service-business.png", "service-business-new.png")
   .replaceAll("service-travel.png", "service-travel-new.png")
-  .replaceAll("why-broker-emerald.png", "why-broker-horizontal.png")
+  .replaceAll("why-broker-emerald.png", "why-broker-combined-new.png")
+  .replaceAll("why-broker-horizontal.png", "why-broker-combined-new.png")
+  .replaceAll("Insurance providers Abdul Rahim works with.", "Insurance providers")
+  .replaceAll("Abdul Rahim can assist with auto, home, business, and travel insurance.", "Auto, home, business, and travel insurance options are available.")
+  .replaceAll("Abdul Rahim serves eligible clients across the province of Ontario.", "Service is available to eligible clients across the province of Ontario.")
   .replace('</p></section><section class="section why"', `</p>${providersDetails}</section><section class="section why"`)
   .replaceAll('href="https://tajinsurance.com/favicon.svg"', `href="${projectPath}/public/favicon.svg"`)
   .replace('href="/privacy"', 'href="https://tajinsurance.com/privacy"')
@@ -109,7 +113,7 @@ const translations = [
   ["Home Insurance", "تأمين المنازل"],
   ["Business Insurance", "تأمين الأعمال"],
   ["Travel Insurance", "تأمين السفر"],
-  ["Insurance providers Abdul Rahim works with.", "شركات التأمين التي يتعامل معها عبد الرحيم."],
+  ["Insurance providers", "شركات التأمين"],
   ["Provider availability and eligibility vary by product and underwriting requirements.", "تختلف أهلية وتوفر الشركات حسب نوع التأمين وشروط القبول."],
   ["View all insurance providers", "عرض جميع شركات التأمين"],
   ["Why work with a broker?", "لماذا تتعامل مع وسيط؟"],
@@ -127,9 +131,9 @@ const translations = [
   ["Why should I work with an insurance broker?", "لماذا أتعامل مع وسيط تأمين؟"],
   ["A broker helps you compare suitable options, understand coverage details, and make an informed choice based on your needs.", "يساعدك الوسيط على مقارنة الخيارات المناسبة وفهم تفاصيل التغطية واتخاذ قرار مدروس حسب احتياجاتك."],
   ["What types of insurance are available?", "ما أنواع التأمين المتوفرة؟"],
-  ["Abdul Rahim can assist with auto, home, business, and travel insurance.", "يساعدك عبد الرحيم في تأمين السيارات والمنازل والأعمال والسفر."],
+  ["Auto, home, business, and travel insurance options are available.", "تتوفر خيارات تأمين السيارات والمنازل والأعمال والسفر."],
   ["Which area do you serve?", "ما منطقة الخدمة؟"],
-  ["Abdul Rahim serves eligible clients across the province of Ontario.", "يخدم عبد الرحيم العملاء المؤهلين في جميع أنحاء مقاطعة أونتاريو."],
+  ["Service is available to eligible clients across the province of Ontario.", "الخدمة متاحة للعملاء المؤهلين في جميع أنحاء مقاطعة أونتاريو."],
   ["Can I receive service in Arabic?", "هل الخدمة متوفرة بالعربية؟"],
   ["Yes. Personal support and the quote form are available in English and Arabic.", "نعم، الدعم الشخصي ونموذج طلب العرض متوفران بالعربية والإنجليزية."],
   ["Is requesting a quote free?", "هل طلب العرض مجاني؟"],

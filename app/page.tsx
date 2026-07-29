@@ -45,7 +45,7 @@ const copy = {
       ["Travel Insurance", "Travel with confidence knowing support is there when it matters.", "✈"],
     ],
     providersKicker: "More choice, one trusted advisor",
-    providersTitle: "Insurance providers Abdul Rahim works with.",
+    providersTitle: "Insurance providers",
     providersNote: "Provider availability and eligibility vary by product and underwriting requirements.",
     providersAll: "View all insurance providers",
     whyKicker: "Why work with a broker?",
@@ -66,8 +66,8 @@ const copy = {
     faqTitle: "Insurance can be simple.",
     faqs: [
       ["Why should I work with an insurance broker?", "A broker helps you compare suitable options, understand coverage details, and make an informed choice based on your needs."],
-      ["What types of insurance are available?", "Abdul Rahim can assist with auto, home, business, and travel insurance."],
-      ["Which area do you serve?", "Abdul Rahim serves eligible clients across the province of Ontario."],
+      ["What types of insurance are available?", "Auto, home, business, and travel insurance options are available."],
+      ["Which area do you serve?", "Service is available to eligible clients across the province of Ontario."],
       ["Can I receive service in Arabic?", "Yes. Personal support and the quote form are available in English and Arabic."],
       ["Is requesting a quote free?", "Yes. A quote request is free and comes with no obligation."],
     ],
@@ -118,7 +118,7 @@ const copy = {
       ["تأمين السفر", "سافر بثقة مع حماية ودعم عندما تحتاج إليهما.", "✈"],
     ],
     providersKicker: "خيارات أكثر مع مستشار موثوق",
-    providersTitle: "شركات التأمين التي يتعامل معها عبد الرحيم.",
+    providersTitle: "شركات التأمين",
     providersNote: "تختلف أهلية وتوفر الشركات حسب نوع التأمين وشروط القبول.",
     providersAll: "عرض جميع شركات التأمين",
     whyKicker: "لماذا تتعامل مع وسيط؟",
@@ -139,8 +139,8 @@ const copy = {
     faqTitle: "التأمين يمكن أن يكون بسيطاً.",
     faqs: [
       ["لماذا أتعامل مع وسيط تأمين؟", "يساعدك الوسيط على مقارنة الخيارات المناسبة وفهم تفاصيل التغطية واتخاذ قرار مدروس حسب احتياجاتك."],
-      ["ما أنواع التأمين المتوفرة؟", "يساعدك عبد الرحيم في تأمين السيارات والمنازل والأعمال والسفر."],
-      ["ما منطقة الخدمة؟", "يخدم عبد الرحيم العملاء المؤهلين في جميع أنحاء مقاطعة أونتاريو."],
+      ["ما أنواع التأمين المتوفرة؟", "تتوفر خيارات تأمين السيارات والمنازل والأعمال والسفر."],
+      ["ما منطقة الخدمة؟", "الخدمة متاحة للعملاء المؤهلين في جميع أنحاء مقاطعة أونتاريو."],
       ["هل الخدمة متوفرة بالعربية؟", "نعم، الدعم الشخصي ونموذج طلب العرض متوفران بالعربية والإنجليزية."],
       ["هل طلب العرض مجاني؟", "نعم، طلب عرض السعر مجاني ومن دون أي التزام."],
     ],
@@ -300,7 +300,7 @@ export default function Home() {
 
       <section className="section why" id="why">
         <div className="why-visual">
-          <img src="/design-assets/why-broker-horizontal.png" alt={lang === "en" ? "Auto, home, business and travel insurance options guided toward the right protection" : "خيارات تأمين السيارات والمنازل والأعمال والسفر موجهة نحو الحماية المناسبة"} />
+          <img src="/design-assets/why-broker-combined-new.png" alt={lang === "en" ? "Auto, home, business and travel insurance options guided toward the right protection" : "خيارات تأمين السيارات والمنازل والأعمال والسفر موجهة نحو الحماية المناسبة"} />
         </div>
         <div className="why-copy">
           <span className="kicker">{t.whyKicker}</span>
