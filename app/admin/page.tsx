@@ -24,7 +24,7 @@ async function LeadsTable() {
     return (
       <div className="admin-empty">
         <h1>Access not authorized</h1>
-        <p>This dashboard is reserved for the Taj Insurance administrator.</p>
+        <p>This dashboard is reserved for the site administrator.</p>
         <a href={chatGPTSignOutPath("/")}>Sign out</a>
       </div>
     );
@@ -59,7 +59,7 @@ async function LeadsTable() {
   return (
     <>
       <header className="admin-header">
-        <div><span className="kicker">Taj Insurance</span><h1>Client requests</h1><p>{leads.length} recent lead{leads.length === 1 ? "" : "s"}</p></div>
+        <div><span className="kicker">Abdul Rahim Al Jouja</span><h1>Client requests</h1><p>{leads.length} recent lead{leads.length === 1 ? "" : "s"}</p></div>
         <div><span>{user.displayName}</span><a href={chatGPTSignOutPath("/")}>Sign out</a></div>
       </header>
       {leads.length === 0 ? (
