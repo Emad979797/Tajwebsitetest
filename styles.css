@@ -50,7 +50,7 @@ a { color: inherit; }
 .nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -9px; height: 2px; background: var(--coral); transition: right .25s; }
 .nav a:hover::after { right: 0; }
 .header-actions { display: flex; align-items: center; gap: 12px; }
-.language-button { border: 0; background: transparent; color: var(--emerald-dark); font-weight: 900; cursor: pointer; min-width: 42px; }
+.language-button { border: 0; background: transparent; color: var(--emerald-dark); font-weight: 900; cursor: pointer; min-width: 42px; text-decoration: none; }
 .menu-button { display: none; width: 42px; height: 42px; border: 0; background: transparent; padding: 10px; cursor: pointer; }
 .menu-button span { display: block; height: 2px; margin: 6px 0; background: var(--ink); }
 

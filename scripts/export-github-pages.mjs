@@ -15,9 +15,13 @@ const documentHtml = sourceHtml
   .replaceAll('src="/social/', `src="${projectPath}/public/social/`)
   .replaceAll('href="https://tajinsurance.com/favicon.svg"', `href="${projectPath}/public/favicon.svg"`)
   .replace('href="/privacy"', 'href="https://tajinsurance.com/privacy"')
+  .replace('<button class="language-button">عربي</button>', `<a class="language-button" href="${projectPath}/ar.html">عربي</a>`)
   .replace(
     "</body></html>",
     `<script>
+      document.querySelector('.menu-button')?.addEventListener('click', () => {
+        document.querySelector('.nav')?.classList.toggle('nav--open');
+      });
       document.querySelectorAll('.faq-item button').forEach((button) => {
         button.addEventListener('click', () => {
           const item = button.closest('.faq-item');
@@ -34,8 +38,84 @@ const documentHtml = sourceHtml
         const body = encodeURIComponent(Array.from(data.entries()).map(([key, value]) => key + ': ' + value).join('\\n'));
         window.location.href = 'mailto:abdulrahimaljouja@gmail.com?subject=' + subject + '&body=' + body;
       });
+      const copyright = document.querySelector('.footer-bottom span');
+      if (copyright) copyright.textContent = copyright.textContent.replace(/20\\d{2}/, String(new Date().getFullYear()));
     </script></body></html>`,
   );
+
+const translations = [
+  ["Home", "الرئيسية"],
+  ["Services", "الخدمات"],
+  ["Insurance Providers", "شركات التأمين"],
+  ["FAQ", "الأسئلة"],
+  ["Contact", "تواصل"],
+  ["RIBO Licensed Insurance Broker", "وسيط تأمين مرخّص من RIBO"],
+  ["Auto, Home, Business &amp; Travel Insurance", "تأمين سيارات ومنازل وأعمال وسفر"],
+  ["Get your free quote", "احصل على عرض مجاني"],
+  ["Auto Insurance", "تأمين السيارات"],
+  ["Home Insurance", "تأمين المنازل"],
+  ["Business Insurance", "تأمين الأعمال"],
+  ["Travel Insurance", "تأمين السفر"],
+  ["Insurance providers Abdul Rahim works with.", "شركات التأمين التي يتعامل معها عبد الرحيم."],
+  ["Provider availability and eligibility vary by product and underwriting requirements.", "تختلف أهلية وتوفر الشركات حسب نوع التأمين وشروط القبول."],
+  ["Why work with a broker?", "لماذا تتعامل مع وسيط؟"],
+  ["Advice that puts you first.", "نصيحة تضع مصلحتك أولاً."],
+  ["More options", "خيارات أكثر"],
+  ["Compare suitable coverage from a broad network of insurance providers.", "مقارنة التغطيات المناسبة من شبكة واسعة من شركات التأمين."],
+  ["Personal guidance", "إرشاد شخصي"],
+  ["Understand your options clearly before making a decision.", "افهم خياراتك بوضوح قبل اتخاذ القرار."],
+  ["Direct support", "تواصل مباشر"],
+  ["Speak with Abdul Rahim—not an anonymous call centre.", "تحدث مع عبد الرحيم مباشرة، وليس مع مركز اتصال مجهول."],
+  ["Efficient service", "خدمة فعالة"],
+  ["A simple process designed to respect your time.", "إجراءات بسيطة مصممة لاحترام وقتك."],
+  ["Helpful answers", "إجابات مفيدة"],
+  ["Insurance can be simple.", "التأمين يمكن أن يكون بسيطاً."],
+  ["Why should I work with an insurance broker?", "لماذا أتعامل مع وسيط تأمين؟"],
+  ["A broker helps you compare suitable options, understand coverage details, and make an informed choice based on your needs.", "يساعدك الوسيط على مقارنة الخيارات المناسبة وفهم تفاصيل التغطية واتخاذ قرار مدروس حسب احتياجاتك."],
+  ["What types of insurance are available?", "ما أنواع التأمين المتوفرة؟"],
+  ["Abdul Rahim can assist with auto, home, business, and travel insurance.", "يساعدك عبد الرحيم في تأمين السيارات والمنازل والأعمال والسفر."],
+  ["Which area do you serve?", "ما منطقة الخدمة؟"],
+  ["Abdul Rahim serves eligible clients across the province of Ontario.", "يخدم عبد الرحيم العملاء المؤهلين في جميع أنحاء مقاطعة أونتاريو."],
+  ["Can I receive service in Arabic?", "هل الخدمة متوفرة بالعربية؟"],
+  ["Yes. Personal support and the quote form are available in English and Arabic.", "نعم، الدعم الشخصي ونموذج طلب العرض متوفران بالعربية والإنجليزية."],
+  ["Is requesting a quote free?", "هل طلب العرض مجاني؟"],
+  ["Yes. A quote request is free and comes with no obligation.", "نعم، طلب عرض السعر مجاني ومن دون أي التزام."],
+  ["Free, no-obligation quote", "عرض مجاني ومن دون التزام"],
+  ["Let’s find the coverage that fits.", "لنبحث عن التغطية التي تناسبك."],
+  ["Share a few details and Abdul Rahim will contact you personally.", "أرسل معلومات بسيطة وسيتواصل معك عبد الرحيم شخصياً."],
+  ["Insurance needed", "التأمين المطلوب"],
+  ["Full name", "الاسم الكامل"],
+  ["Email address", "البريد الإلكتروني"],
+  ["Phone number", "رقم الهاتف"],
+  ["City", "المدينة"],
+  ["Preferred contact method", "طريقة التواصل المفضلة"],
+  ["Best time to reach you", "أفضل وقت للتواصل"],
+  ["Tell us briefly what you need", "اشرح لنا باختصار ما تحتاجه"],
+  ["Phone call", "مكالمة"],
+  ["Morning", "صباحاً"],
+  ["Afternoon", "بعد الظهر"],
+  ["Evening", "مساءً"],
+  ["I consent to being contacted about this insurance request and agree to the privacy policy.", "أوافق على التواصل معي بخصوص طلب التأمين وعلى سياسة الخصوصية."],
+  ["Private &amp; no obligation", "خصوصية ومن دون التزام"],
+  ["Send my request", "إرسال الطلب"],
+  ["<span>Auto</span>", "<span>سيارات</span>"],
+  ["<span>Home</span>", "<span>منازل</span>"],
+  ["<span>Business</span>", "<span>أعمال</span>"],
+  ["<span>Travel</span>", "<span>سفر</span>"],
+  ["<span>Multiple</span>", "<span>أكثر من نوع</span>"],
+  ["Personal insurance guidance from a RIBO licensed broker serving Ontario.", "إرشاد تأميني شخصي من وسيط مرخّص من RIBO يخدم أونتاريو."],
+  ["Privacy", "الخصوصية"],
+];
+
+let arabicHtml = documentHtml
+  .replace('<html lang="en">', '<html lang="ar">')
+  .replace('<main class="site" dir="ltr" lang="en">', '<main class="site" dir="rtl" lang="ar">')
+  .replace(`<a class="language-button" href="${projectPath}/ar.html">عربي</a>`, `<a class="language-button" href="${projectPath}/">EN</a>`)
+  .replace("<title>Abdul Rahim Al Jouja | RIBO Licensed Insurance Broker</title>", "<title>عبد الرحيم الجوجة | وسيط تأمين مرخّص من RIBO</title>");
+
+for (const [english, arabic] of translations.sort((a, b) => b[0].length - a[0].length)) {
+  arabicHtml = arabicHtml.replaceAll(english, arabic);
+}
 
 const pagesCss = sourceCss
   .replace('@import "tailwindcss";', "")
@@ -45,5 +125,6 @@ const pagesCss = sourceCss
   );
 
 await writeFile(new URL("../index.html", import.meta.url), documentHtml);
+await writeFile(new URL("../ar.html", import.meta.url), arabicHtml);
 await writeFile(new URL("../styles.css", import.meta.url), pagesCss);
 await writeFile(new URL("../.nojekyll", import.meta.url), "");
