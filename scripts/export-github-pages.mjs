@@ -18,7 +18,7 @@ const providersGrid = providerAssets.map(([name, image]) =>
 ).join("");
 const providersDetails = `<details class="providers-all"><summary>View all insurance providers<span>＋</span></summary><div class="providers-all-grid">${providersGrid}</div></details>`;
 
-const documentHtml = sourceHtml
+const baseDocumentHtml = sourceHtml
   .split('<script id="_R_">')[0]
   .replace(/<link rel="preload"[^>]*\/>/g, "")
   .replace(/<link rel="stylesheet"[^>]*\/>/g, `<link rel="stylesheet" href="${projectPath}/styles.css"/>`)
@@ -31,6 +31,7 @@ const documentHtml = sourceHtml
   .replaceAll("service-home.png", "service-home-new.png")
   .replaceAll("service-business.png", "service-business-new.png")
   .replaceAll("service-travel.png", "service-travel-new.png")
+  .replaceAll("why-broker-emerald.png", "why-broker-horizontal.png")
   .replace('</p></section><section class="section why"', `</p>${providersDetails}</section><section class="section why"`)
   .replaceAll('href="https://tajinsurance.com/favicon.svg"', `href="${projectPath}/public/favicon.svg"`)
   .replace('href="/privacy"', 'href="https://tajinsurance.com/privacy"')
@@ -48,6 +49,8 @@ const documentHtml = sourceHtml
           button.setAttribute('aria-expanded', String(open));
           const icon = button.querySelector('i');
           if (icon) icon.textContent = open ? '−' : '+';
+          const answer = item.querySelector('.faq-answer');
+          if (answer) answer.style.gridTemplateRows = open ? '1fr' : '0fr';
         });
       });
       document.querySelector('form')?.addEventListener('submit', (event) => {
@@ -61,6 +64,34 @@ const documentHtml = sourceHtml
       if (copyright) copyright.textContent = copyright.textContent.replace(/20\\d{2}/, String(new Date().getFullYear()));
     </script></body></html>`,
   );
+
+const documentHtml = baseDocumentHtml.includes("document.querySelectorAll('.faq-item button')")
+  ? baseDocumentHtml
+  : `${baseDocumentHtml}<script>
+      document.querySelector('.menu-button')?.addEventListener('click', () => {
+        document.querySelector('.nav')?.classList.toggle('nav--open');
+      });
+      document.querySelectorAll('.faq-item button').forEach((button) => {
+        button.addEventListener('click', () => {
+          const item = button.closest('.faq-item');
+          const open = item.classList.toggle('faq-item--open');
+          button.setAttribute('aria-expanded', String(open));
+          const icon = button.querySelector('i');
+          if (icon) icon.textContent = open ? '−' : '+';
+          const answer = item.querySelector('.faq-answer');
+          if (answer) answer.style.gridTemplateRows = open ? '1fr' : '0fr';
+        });
+      });
+      document.querySelector('form')?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const subject = encodeURIComponent('Insurance quote request from ' + (data.get('name') || 'website visitor'));
+        const body = encodeURIComponent(Array.from(data.entries()).map(([key, value]) => key + ': ' + value).join('\\n'));
+        window.location.href = 'mailto:abdulrahimaljouja@gmail.com?subject=' + subject + '&body=' + body;
+      });
+      const copyright = document.querySelector('.footer-bottom span');
+      if (copyright) copyright.textContent = copyright.textContent.replace(/20\\d{2}/, String(new Date().getFullYear()));
+    </script>`;
 
 const translations = [
   ["Home", "الرئيسية"],

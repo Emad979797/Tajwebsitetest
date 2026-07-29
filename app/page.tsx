@@ -300,7 +300,7 @@ export default function Home() {
 
       <section className="section why" id="why">
         <div className="why-visual">
-          <img src="/design-assets/why-broker-emerald.png" alt={lang === "en" ? "Auto, home, business and travel insurance options guided toward the right protection" : "خيارات تأمين السيارات والمنازل والأعمال والسفر موجهة نحو الحماية المناسبة"} />
+          <img src="/design-assets/why-broker-horizontal.png" alt={lang === "en" ? "Auto, home, business and travel insurance options guided toward the right protection" : "خيارات تأمين السيارات والمنازل والأعمال والسفر موجهة نحو الحماية المناسبة"} />
         </div>
         <div className="why-copy">
           <span className="kicker">{t.whyKicker}</span>
