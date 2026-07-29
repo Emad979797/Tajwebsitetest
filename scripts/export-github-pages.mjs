@@ -107,7 +107,7 @@ const translations = [
   ["FAQ", "الأسئلة"],
   ["Contact", "تواصل"],
   ["RIBO Licensed Insurance Broker", "وسيط تأمين مرخّص من RIBO"],
-  ["Auto, Home, Business &amp; Travel Insurance", "تأمين سيارات ومنازل وأعمال وسفر"],
+  ["Auto, Home, Business &amp; Travel Insurance", "تأمين سيارات ،منازل ،أعمال وسفر"],
   ["Get your free quote", "احصل على عرض مجاني"],
   ["Auto Insurance", "تأمين السيارات"],
   ["Home Insurance", "تأمين المنازل"],
