@@ -90,11 +90,11 @@ a { color: inherit; }
   font-size: clamp(58px, 7vw, 108px); font-weight: 900; line-height: .88; letter-spacing: .01em;
 }
 .hero h2 { margin: 17px 0 14px; color: var(--emerald-dark); font-size: clamp(20px, 2vw, 30px); font-weight: 850; }
-.hero-phone { display: inline-flex; align-items: center; gap: 13px; text-decoration: none; font-size: clamp(24px, 2.6vw, 40px); font-weight: 950; }
+.hero-phone { display: inline-flex; align-items: center; gap: 13px; text-decoration: none; font-size: clamp(24px, 2.6vw, 40px); font-weight: 950; direction: ltr; unicode-bidi: isolate; }
 .hero-phone span { width: 45px; height: 45px; border-radius: 50%; display: grid; place-items: center; color: white; background: var(--teal); font-size: 19px; }
 .hero-phone span svg { width: 23px; height: 23px; display: block; }
 .service-line {
-  margin: 16px 0 0; color: var(--coral); font-size: clamp(19px, 2vw, 29px); font-weight: 900;
+  margin: 16px 0 0; color: var(--ink); font-size: clamp(19px, 2vw, 29px); font-weight: 900;
   font-family: "Geeza Pro", "Noto Kufi Arabic", Tahoma, sans-serif;
 }
 .hero-intro { max-width: 610px; color: var(--muted); font-size: 16px; line-height: 1.7; margin: 17px 0 27px; }
@@ -160,6 +160,18 @@ a { color: inherit; }
 .wordmark--nordic { color: #ba2026; font-style: italic; }
 .wordmark--max { color: #1c6a59; font-size: 30px; text-transform: uppercase; }
 .providers-note { color: var(--muted); font-size: 11px; margin: 24px 20px 0; }
+.providers-all { width: min(1180px, calc(100% - 40px)); margin: 28px auto 0; }
+.providers-all summary {
+  width: fit-content; min-height: 50px; margin: auto; padding: 0 24px; border-radius: 999px;
+  display: flex; align-items: center; gap: 15px; color: white; background: linear-gradient(115deg, var(--emerald), var(--teal));
+  font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: .05em; cursor: pointer;
+  box-shadow: 0 14px 30px rgba(8,125,107,.2); list-style: none;
+}
+.providers-all summary::-webkit-details-marker { display: none; }
+.providers-all summary span { font-size: 22px; line-height: 1; transition: transform .25s; }
+.providers-all[open] summary span { transform: rotate(45deg); }
+.providers-all-grid { margin-top: 24px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.providers-all-grid .logo-card { width: auto; }
 @keyframes logoScroll { to { transform: translateX(calc(-50% - 8px)); } }
 
 .why { display: grid; grid-template-columns: .92fr 1.08fr; gap: clamp(60px, 9vw, 130px); align-items: center; background: white; }
@@ -336,7 +348,7 @@ a { color: inherit; }
 .header-phone {
   min-height: 54px; padding: 0 24px; border-radius: 999px; display: inline-flex; align-items: center; gap: 10px;
   color: white; background: linear-gradient(115deg, #087d6b, #099680); text-decoration: none;
-  font-size: 16px; font-weight: 900; box-shadow: 0 12px 26px rgba(8,125,107,.18);
+  font-size: 16px; font-weight: 900; box-shadow: 0 12px 26px rgba(8,125,107,.18); direction: ltr; unicode-bidi: isolate;
 }
 .header-phone span { font-size: 18px; }
 .header-phone span svg { width: 21px; height: 21px; display: block; }
@@ -376,8 +388,10 @@ a { color: inherit; }
 .service-line { margin-top: 10px; }
 .hero-actions { margin-top: 17px; }
 .hero-actions .button { min-width: 385px; justify-content: space-between; }
+.hero-actions .button span { font-size: 25px; line-height: 1; }
 .hero-visual {
-  min-height: 520px;
+  min-height: 0;
+  aspect-ratio: 1632 / 963;
   align-self: end;
   display: block;
   overflow: hidden;
@@ -385,29 +399,28 @@ a { color: inherit; }
   background: white;
 }
 .hero-visual::before {
-  content: ""; position: absolute; z-index: 2; inset: 0 auto 0 0; width: 58px;
-  background: linear-gradient(90deg, white 72%, rgba(255,255,255,0)); pointer-events: none;
+  display: none;
 }
-.approved-hero-image { width: 100%; height: 100%; min-height: 520px; object-fit: cover; object-position: center top; display: block; }
+.approved-hero-image { width: 100%; height: 100%; min-height: 0; object-fit: contain; object-position: left top; display: block; }
 .services {
   padding: 16px clamp(42px, 5vw, 80px) 28px;
   background: white;
 }
 .service-grid { gap: 28px; }
 .service-card {
-  min-height: 245px;
-  padding: 18px 28px 14px;
+  min-height: 0;
+  padding: 0;
   border-radius: 18px;
   text-align: center;
   background: linear-gradient(145deg, #f5fffc, #edf9f7);
 }
 .service-card:nth-child(even) { background: linear-gradient(145deg, #f8fdff, #edf7fc); }
 .service-card::before { display: none; }
-.service-art { width: 100%; height: 148px; overflow: hidden; border-radius: 15px; }
-.service-art img { width: 100%; height: 190px; object-fit: cover; object-position: center top; display: block; }
-.service-card h3 { margin: 3px 0 10px; font-size: 21px; }
+.service-art { width: 100%; height: auto; overflow: hidden; border-radius: 15px; }
+.service-art img { width: 100%; height: auto; object-fit: contain; object-position: center; display: block; }
+.service-card h3 { display: none; }
 .service-card p { display: none; }
-.service-card a { justify-content: center; gap: 15px; margin-top: auto; padding-top: 10px; }
+.service-card a { display: none; }
 .providers { padding-top: 28px; }
 .providers-heading .kicker { display: none; }
 .providers h2 { margin-top: 0; font-size: clamp(28px, 3vw, 43px); }
@@ -470,8 +483,8 @@ a { color: inherit; }
   .hero h1 { white-space: normal; font-size: clamp(44px, 11vw, 60px); }
   .hero-phone, .hero-actions { justify-content: center; }
   .hero-actions .button { min-width: min(100%, 385px); }
-  .hero-visual { width: min(100%, 760px); min-height: 450px; margin: auto; }
-  .approved-hero-image { min-height: 450px; }
+  .hero-visual { width: min(100%, 760px); min-height: 0; margin: auto; aspect-ratio: 1632 / 963; }
+  .approved-hero-image { min-height: 0; object-position: left top; }
   .services { padding-inline: 20px; }
   .service-grid { grid-template-columns: 1fr 1fr; }
   .footer-main { grid-template-columns: 1fr; }
@@ -483,9 +496,10 @@ a { color: inherit; }
   .hero h1 { font-size: 44px; }
   .hero-phone { font-size: 25px; }
   .service-grid { grid-template-columns: 1fr; }
-  .service-card { min-height: 250px; }
-  .hero-visual { min-height: 390px; }
-  .approved-hero-image { min-height: 390px; }
+  .service-card { min-height: 0; }
+  .hero-visual { min-height: 0; }
+  .approved-hero-image { min-height: 0; }
+  .providers-all-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .why-copy > .kicker,
   .faq-heading > .kicker,
   .quote-intro > .kicker { font-size: 12px; }

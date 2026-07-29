@@ -3,6 +3,20 @@ import { readFile, writeFile } from "node:fs/promises";
 const projectPath = "/Tajwebsitetest";
 const sourceHtml = await readFile("/private/tmp/taj-page.html", "utf8");
 const sourceCss = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+const providerAssets = [
+  ["Intact Insurance", "intact.jpg"], ["Aviva Canada", "aviva.png"], ["Definity Insurance", "definity.jpg"],
+  ["Pembridge Insurance", "pembridge.png"], ["Pafco Insurance", "pafco.gif"], ["Economical Insurance", "economical.png"],
+  ["Gore Mutual", "gore.jpg"], ["CAA Insurance", "caa.svg"], ["Coachman Insurance", "coachman.jpg"],
+  ["Echelon Insurance", "echelon.png"], ["Jevco Insurance", "jevco.jpg"], ["Nordic Insurance", null],
+  ["Wawanesa Insurance", "wawanesa.png"], ["Travelers Canada", "travelers.png"], ["SGI Canada", "sgi.jpg"],
+  ["Unica", "unica.png"], ["MAX Insurance", "max.svg"], ["TuGo Insurance", "tugo.jpg"],
+];
+const providersGrid = providerAssets.map(([name, image]) =>
+  `<div class="logo-card">${image
+    ? `<img src="${projectPath}/public/insurers/${image}" alt="${name}"/>`
+    : '<span class="wordmark wordmark--nordic">Nordic</span>'}</div>`,
+).join("");
+const providersDetails = `<details class="providers-all"><summary>View all insurance providers<span>＋</span></summary><div class="providers-all-grid">${providersGrid}</div></details>`;
 
 const documentHtml = sourceHtml
   .split('<script id="_R_">')[0]
@@ -13,6 +27,11 @@ const documentHtml = sourceHtml
   .replaceAll('src="/design-assets/', `src="${projectPath}/public/design-assets/`)
   .replaceAll('src="/insurers/', `src="${projectPath}/public/insurers/`)
   .replaceAll('src="/social/', `src="${projectPath}/public/social/`)
+  .replaceAll("service-auto.png", "service-auto-new.png")
+  .replaceAll("service-home.png", "service-home-new.png")
+  .replaceAll("service-business.png", "service-business-new.png")
+  .replaceAll("service-travel.png", "service-travel-new.png")
+  .replace('</p></section><section class="section why"', `</p>${providersDetails}</section><section class="section why"`)
   .replaceAll('href="https://tajinsurance.com/favicon.svg"', `href="${projectPath}/public/favicon.svg"`)
   .replace('href="/privacy"', 'href="https://tajinsurance.com/privacy"')
   .replace('<button class="language-button">عربي</button>', `<a class="language-button" href="${projectPath}/ar.html">عربي</a>`)
@@ -58,6 +77,7 @@ const translations = [
   ["Travel Insurance", "تأمين السفر"],
   ["Insurance providers Abdul Rahim works with.", "شركات التأمين التي يتعامل معها عبد الرحيم."],
   ["Provider availability and eligibility vary by product and underwriting requirements.", "تختلف أهلية وتوفر الشركات حسب نوع التأمين وشروط القبول."],
+  ["View all insurance providers", "عرض جميع شركات التأمين"],
   ["Why work with a broker?", "لماذا تتعامل مع وسيط؟"],
   ["Advice that puts you first.", "نصيحة تضع مصلحتك أولاً."],
   ["More options", "خيارات أكثر"],

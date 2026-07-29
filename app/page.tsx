@@ -47,6 +47,7 @@ const copy = {
     providersKicker: "More choice, one trusted advisor",
     providersTitle: "Insurance providers Abdul Rahim works with.",
     providersNote: "Provider availability and eligibility vary by product and underwriting requirements.",
+    providersAll: "View all insurance providers",
     whyKicker: "Why work with a broker?",
     whyTitle: "Advice that puts you first.",
     benefits: [
@@ -119,6 +120,7 @@ const copy = {
     providersKicker: "خيارات أكثر مع مستشار موثوق",
     providersTitle: "شركات التأمين التي يتعامل معها عبد الرحيم.",
     providersNote: "تختلف أهلية وتوفر الشركات حسب نوع التأمين وشروط القبول.",
+    providersAll: "عرض جميع شركات التأمين",
     whyKicker: "لماذا تتعامل مع وسيط؟",
     whyTitle: "نصيحة تضع مصلحتك أولاً.",
     benefits: [
@@ -261,7 +263,7 @@ export default function Home() {
         <div className="service-grid">
           {t.services.map(([title, description], index) => (
             <article className="service-card" key={title}>
-              <div className="service-art"><img src={`/design-assets/service-${["auto", "home", "business", "travel"][index]}.png`} alt="" /></div>
+              <div className="service-art"><img src={`/design-assets/service-${["auto", "home", "business", "travel"][index]}-new.png`} alt="" /></div>
               <h3>{title}</h3>
               <a href="#quote">{t.quote}<span>↗</span></a>
             </article>
@@ -284,6 +286,16 @@ export default function Home() {
           </div>
         </div>
         <p className="providers-note">{t.providersNote}</p>
+        <details className="providers-all">
+          <summary>{t.providersAll}<span>＋</span></summary>
+          <div className="providers-all-grid">
+            {insurers.map(([name, image]) => (
+              <div className="logo-card" key={`all-${name}`}>
+                {image ? <img src={image} alt={name} /> : <span className="wordmark wordmark--nordic">Nordic</span>}
+              </div>
+            ))}
+          </div>
+        </details>
       </section>
 
       <section className="section why" id="why">
