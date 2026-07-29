@@ -34,7 +34,7 @@ const baseDocumentHtml = sourceHtml
   .replaceAll("service-home.png", "service-home-new.png")
   .replaceAll("service-business.png", "service-business-new.png")
   .replaceAll("service-travel.png", "service-travel-new.png")
-  .replaceAll("service-auto-new.png\"", "service-auto-new.png?v=20260729-1500\"")
+  .replaceAll("service-auto-new.png\"", "service-auto-new.png?v=20260729-1510\"")
   .replaceAll("service-home-new.png\"", "service-home-new.png?v=20260729-1445\"")
   .replaceAll("service-business-new.png\"", "service-business-new.png?v=20260729-1445\"")
   .replaceAll("service-travel-new.png\"", "service-travel-new.png?v=20260729-1445\"")
