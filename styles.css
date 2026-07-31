@@ -444,7 +444,7 @@ a { color: inherit; }
     max-width: none;
     justify-self: center;
     position: relative;
-    top: clamp(62px, 4vw, 82px);
+    top: clamp(49px, calc(4.3vw - 6px), 82px);
   }
 }
 .why-copy > .kicker,
