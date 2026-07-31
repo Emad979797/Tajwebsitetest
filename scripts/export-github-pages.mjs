@@ -21,7 +21,7 @@ const providersDetails = `<details class="providers-all"><summary>View all insur
 const baseDocumentHtml = sourceHtml
   .split('<script id="_R_">')[0]
   .replace(/<link rel="preload"[^>]*\/>/g, "")
-  .replace(/<link rel="stylesheet"[^>]*\/>/g, `<link rel="stylesheet" href="${projectPath}/styles.css?v=20260731-1245"/>`)
+  .replace(/<link rel="stylesheet"[^>]*\/>/g, `<link rel="stylesheet" href="${projectPath}/styles.css?v=20260731-1255"/>`)
   .replace(/<script type="module">import \{ injectIntoGlobalHook \}[\s\S]*?<\/script>/g, "")
   .replace(/<script type="module" src="\/@vite\/client"><\/script>/g, "")
   .replace(/<script type="module" src="\/@id\/[^"]+"><\/script>/g, "")
