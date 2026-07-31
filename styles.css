@@ -434,10 +434,10 @@ a { color: inherit; }
   display: grid;
   place-items: center;
   min-height: 0;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1264 / 843;
 }
 .why-visual::before, .why-visual::after { display: none; }
-.why-visual img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; border-radius: inherit; }
+.why-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; border-radius: inherit; }
 .why-copy > .kicker,
 .faq-heading > .kicker,
 .quote-intro > .kicker {
