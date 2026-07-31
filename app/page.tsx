@@ -32,7 +32,7 @@ const copy = {
     arabicName: "عبد الرحيم الجوجة",
     name: "ABDUL RAHIM AL JOUJA",
     title: "RIBO Licensed Insurance Broker",
-    serviceLine: "Auto, Home, Business & Travel Insurance",
+    serviceLine: "Auto, Home, Commercial & Travel Insurance",
     heroIntro: "Clear advice, personal service, and access to trusted insurance providers—right here in Ontario.",
     ontario: "Serving clients across Ontario",
     servicesKicker: "Insurance for what matters",
@@ -41,7 +41,7 @@ const copy = {
     services: [
       ["Auto Insurance", "Coverage matched to your vehicle, driving needs, and budget.", "🚗"],
       ["Home Insurance", "Thoughtful protection for your home and the things you value.", "⌂"],
-      ["Business Insurance", "Flexible coverage built around your commercial needs.", "▣"],
+      ["Commercial Insurance", "Flexible coverage built around your commercial needs.", "▣"],
       ["Travel Insurance", "Travel with confidence knowing support is there when it matters.", "✈"],
     ],
     providersKicker: "More choice, one trusted advisor",
@@ -66,7 +66,7 @@ const copy = {
     faqTitle: "Insurance can be simple.",
     faqs: [
       ["Why should I work with an insurance broker?", "A broker helps you compare suitable options, understand coverage details, and make an informed choice based on your needs."],
-      ["What types of insurance are available?", "Auto, home, business, and travel insurance options are available."],
+      ["What types of insurance are available?", "Auto, home, commercial, and travel insurance options are available."],
       ["Which area do you serve?", "Service is available to eligible clients across the province of Ontario."],
       ["Can I receive service in Arabic?", "Yes. Personal support and the quote form are available in English and Arabic."],
       ["Is requesting a quote free?", "Yes. A quote request is free and comes with no obligation."],
@@ -86,7 +86,7 @@ const copy = {
       consent: "I consent to being contacted about this insurance request and agree to the privacy policy.",
     },
     options: {
-      auto: "Auto", home: "Home", business: "Business", travel: "Travel", multiple: "Multiple",
+      auto: "Auto", home: "Home", business: "Commercial", travel: "Travel", multiple: "Multiple",
       whatsapp: "WhatsApp", phone: "Phone call", email: "Email",
       morning: "Morning", afternoon: "Afternoon", evening: "Evening",
     },
@@ -105,7 +105,7 @@ const copy = {
     arabicName: "عبد الرحيم الجوجة",
     name: "ABDUL RAHIM AL JOUJA",
     title: "وسيط تأمين مرخّص من RIBO",
-    serviceLine: "تأمين سيارات ،منازل ،أعمال وسفر",
+    serviceLine: "تأمين سيارات ،منازل ،تجاري وسفر",
     heroIntro: "نصيحة واضحة، خدمة شخصية، وخيارات من شركات تأمين موثوقة في مقاطعة أونتاريو.",
     ontario: "نخدم العملاء في جميع أنحاء أونتاريو",
     servicesKicker: "تأمين لما يهمك",
@@ -114,7 +114,7 @@ const copy = {
     services: [
       ["تأمين السيارات", "تغطية تناسب سيارتك واحتياجات قيادتك وميزانيتك.", "🚗"],
       ["تأمين المنازل", "حماية مدروسة لمنزلك وكل ما يهمك داخله.", "⌂"],
-      ["تأمين الأعمال", "تغطية مرنة مصممة حسب احتياجات نشاطك التجاري.", "▣"],
+      ["التأمين التجاري", "تغطية مرنة مصممة حسب احتياجات نشاطك التجاري.", "▣"],
       ["تأمين السفر", "سافر بثقة مع حماية ودعم عندما تحتاج إليهما.", "✈"],
     ],
     providersKicker: "خيارات أكثر مع مستشار موثوق",
@@ -139,7 +139,7 @@ const copy = {
     faqTitle: "التأمين يمكن أن يكون بسيطاً.",
     faqs: [
       ["لماذا أتعامل مع وسيط تأمين؟", "يساعدك الوسيط على مقارنة الخيارات المناسبة وفهم تفاصيل التغطية واتخاذ قرار مدروس حسب احتياجاتك."],
-      ["ما أنواع التأمين المتوفرة؟", "تتوفر خيارات تأمين السيارات والمنازل والأعمال والسفر."],
+      ["ما أنواع التأمين المتوفرة؟", "تتوفر خيارات تأمين السيارات والمنازل والتأمين التجاري والسفر."],
       ["ما منطقة الخدمة؟", "الخدمة متاحة للعملاء المؤهلين في جميع أنحاء مقاطعة أونتاريو."],
       ["هل الخدمة متوفرة بالعربية؟", "نعم، الدعم الشخصي ونموذج طلب العرض متوفران بالعربية والإنجليزية."],
       ["هل طلب العرض مجاني؟", "نعم، طلب عرض السعر مجاني ومن دون أي التزام."],
@@ -159,7 +159,7 @@ const copy = {
       consent: "أوافق على التواصل معي بخصوص طلب التأمين وعلى سياسة الخصوصية.",
     },
     options: {
-      auto: "سيارات", home: "منازل", business: "أعمال", travel: "سفر", multiple: "أكثر من نوع",
+      auto: "سيارات", home: "منازل", business: "تجاري", travel: "سفر", multiple: "أكثر من نوع",
       whatsapp: "واتساب", phone: "مكالمة", email: "بريد إلكتروني",
       morning: "صباحاً", afternoon: "بعد الظهر", evening: "مساءً",
     },
@@ -263,7 +263,7 @@ export default function Home() {
         <div className="service-grid">
           {t.services.map(([title, description], index) => (
             <article className="service-card" key={title}>
-              <div className="service-art"><img src={`/design-assets/service-${["auto", "home", "business", "travel"][index]}-new.png`} alt="" /></div>
+              <a className="service-art" href="#quote" aria-label={`${title} — ${t.quote}`}><img src={`/design-assets/service-${["auto", "home", "business", "travel"][index]}-new.png`} alt="" /></a>
               <h3>{title}</h3>
               <a href="#quote">{t.quote}<span>↗</span></a>
             </article>
@@ -300,7 +300,7 @@ export default function Home() {
 
       <section className="section why" id="why">
         <div className="why-visual">
-          <img src="/design-assets/why-broker-combined-new.png" alt={lang === "en" ? "Auto, home, business and travel insurance options guided toward the right protection" : "خيارات تأمين السيارات والمنازل والأعمال والسفر موجهة نحو الحماية المناسبة"} />
+          <img src="/design-assets/why-broker-combined-new.png" alt={lang === "en" ? "Auto, home, commercial and travel insurance options guided toward the right protection" : "خيارات تأمين السيارات والمنازل والتأمين التجاري والسفر موجهة نحو الحماية المناسبة"} />
         </div>
         <div className="why-copy">
           <span className="kicker">{t.whyKicker}</span>

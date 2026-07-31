@@ -13,7 +13,7 @@ test("homepage uses the approved broker-first Ontario content", async () => {
   assert.match(page, /ABDUL RAHIM AL JOUJA/);
   assert.match(page, /عبد الرحيم الجوجة/);
   assert.match(page, /Serving clients across Ontario/);
-  assert.match(page, /Auto, Home, Business & Travel Insurance/);
+  assert.match(page, /Auto, Home, Commercial & Travel Insurance/);
   assert.match(page, /const insurers = \[/);
   assert.match(page, /\[\.\.\.insurers, \.\.\.insurers\]/);
   assert.doesNotMatch(page, /Taj Insurance|Canada-wide|Serving clients across Canada/);

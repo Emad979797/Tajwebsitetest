@@ -34,14 +34,21 @@ const baseDocumentHtml = sourceHtml
   .replaceAll("service-home.png", "service-home-new.png")
   .replaceAll("service-business.png", "service-business-new.png")
   .replaceAll("service-travel.png", "service-travel-new.png")
-  .replaceAll("service-auto-new.png\"", "service-auto-new.png?v=20260729-1510\"")
-  .replaceAll("service-home-new.png\"", "service-home-new.png?v=20260729-1445\"")
-  .replaceAll("service-business-new.png\"", "service-business-new.png?v=20260729-1445\"")
-  .replaceAll("service-travel-new.png\"", "service-travel-new.png?v=20260729-1445\"")
+  .replaceAll("Auto, Home, Business &amp; Travel Insurance", "Auto, Home, Commercial &amp; Travel Insurance")
+  .replaceAll("Business Insurance", "Commercial Insurance")
+  .replaceAll("<span>Business</span>", "<span>Commercial</span>")
+  .replaceAll("Auto, home, business, and travel insurance options are available.", "Auto, home, commercial, and travel insurance options are available.")
+  .replaceAll('<div class="service-art"><img', '<a class="service-art" href="#quote"><img')
+  .replaceAll('alt=""/></div><h3>', 'alt=""/></a><h3>')
+  .replace(/service-auto-new\.png(?:\?v=[^"]+)?"/g, 'service-auto-new.png?v=20260731-1200"')
+  .replace(/service-home-new\.png(?:\?v=[^"]+)?"/g, 'service-home-new.png?v=20260731-1200"')
+  .replace(/service-business-new\.png(?:\?v=[^"]+)?"/g, 'service-business-new.png?v=20260731-1200"')
+  .replace(/service-travel-new\.png(?:\?v=[^"]+)?"/g, 'service-travel-new.png?v=20260731-1200"')
   .replaceAll("why-broker-emerald.png", "why-broker-combined-new.png")
   .replaceAll("why-broker-horizontal.png", "why-broker-combined-new.png")
+  .replace(/why-broker-combined-new\.png(?:\?v=[^"]+)?"/g, 'why-broker-combined-new.png?v=20260731-1235"')
   .replaceAll("Insurance providers Abdul Rahim works with.", "Insurance providers")
-  .replaceAll("Abdul Rahim can assist with auto, home, business, and travel insurance.", "Auto, home, business, and travel insurance options are available.")
+  .replaceAll("Abdul Rahim can assist with auto, home, business, and travel insurance.", "Auto, home, commercial, and travel insurance options are available.")
   .replaceAll("Abdul Rahim serves eligible clients across the province of Ontario.", "Service is available to eligible clients across the province of Ontario.")
   .replace('</p></section><section class="section why"', `</p>${providersDetails}</section><section class="section why"`)
   .replaceAll('href="https://tajinsurance.com/favicon.svg"', `href="${projectPath}/public/favicon.svg"`)
@@ -111,11 +118,11 @@ const translations = [
   ["FAQ", "الأسئلة"],
   ["Contact", "تواصل"],
   ["RIBO Licensed Insurance Broker", "وسيط تأمين مرخّص من RIBO"],
-  ["Auto, Home, Business &amp; Travel Insurance", "تأمين سيارات ،منازل ،أعمال وسفر"],
+  ["Auto, Home, Commercial &amp; Travel Insurance", "تأمين سيارات ،منازل ،تجاري وسفر"],
   ["Get your free quote", "احصل على عرض مجاني"],
   ["Auto Insurance", "تأمين السيارات"],
   ["Home Insurance", "تأمين المنازل"],
-  ["Business Insurance", "تأمين الأعمال"],
+  ["Commercial Insurance", "التأمين التجاري"],
   ["Travel Insurance", "تأمين السفر"],
   ["Insurance providers", "شركات التأمين"],
   ["Provider availability and eligibility vary by product and underwriting requirements.", "تختلف أهلية وتوفر الشركات حسب نوع التأمين وشروط القبول."],
@@ -135,7 +142,7 @@ const translations = [
   ["Why should I work with an insurance broker?", "لماذا أتعامل مع وسيط تأمين؟"],
   ["A broker helps you compare suitable options, understand coverage details, and make an informed choice based on your needs.", "يساعدك الوسيط على مقارنة الخيارات المناسبة وفهم تفاصيل التغطية واتخاذ قرار مدروس حسب احتياجاتك."],
   ["What types of insurance are available?", "ما أنواع التأمين المتوفرة؟"],
-  ["Auto, home, business, and travel insurance options are available.", "تتوفر خيارات تأمين السيارات والمنازل والأعمال والسفر."],
+  ["Auto, home, commercial, and travel insurance options are available.", "تتوفر خيارات تأمين السيارات والمنازل والتأمين التجاري والسفر."],
   ["Which area do you serve?", "ما منطقة الخدمة؟"],
   ["Service is available to eligible clients across the province of Ontario.", "الخدمة متاحة للعملاء المؤهلين في جميع أنحاء مقاطعة أونتاريو."],
   ["Can I receive service in Arabic?", "هل الخدمة متوفرة بالعربية؟"],
@@ -162,7 +169,7 @@ const translations = [
   ["Send my request", "إرسال الطلب"],
   ["<span>Auto</span>", "<span>سيارات</span>"],
   ["<span>Home</span>", "<span>منازل</span>"],
-  ["<span>Business</span>", "<span>أعمال</span>"],
+  ["<span>Commercial</span>", "<span>تجاري</span>"],
   ["<span>Travel</span>", "<span>سفر</span>"],
   ["<span>Multiple</span>", "<span>أكثر من نوع</span>"],
   ["Personal insurance guidance from a RIBO licensed broker serving Ontario.", "إرشاد تأميني شخصي من وسيط مرخّص من RIBO يخدم أونتاريو."],
