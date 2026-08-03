@@ -220,7 +220,8 @@ a { color: inherit; }
 }
 .quote-intro > p { color: var(--muted); font-size: 16px; line-height: 1.7; }
 .quote-contact { margin-top: 45px; display: flex; flex-direction: column; gap: 12px; font-weight: 850; }
-.quote-contact a { text-decoration: none; }
+.quote-contact a { text-decoration: none; direction: ltr; unicode-bidi: isolate; }
+.site[dir="rtl"] .quote-contact a { text-align: right; }
 .form-card { background: white; border-radius: 28px; padding: clamp(28px, 4vw, 55px); box-shadow: var(--shadow); }
 .form-card fieldset { border: 0; padding: 0; margin: 0 0 30px; }
 .form-card legend, .field > span { display: block; margin-bottom: 10px; color: var(--emerald-dark); font-size: 10px; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
